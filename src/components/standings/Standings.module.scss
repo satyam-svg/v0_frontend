@@ -1,0 +1,98 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      margin: 0 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #f8f8f8;
+      transition: background-color 0.3s ease;
+
+      &.activeTab {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+  .poolHeader {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .roundHeader {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  .table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+    background-color: #f8f8f8;
+
+    thead {
+      tr {
+        background-color: #89cff0;
+        color: black;
+
+        th {
+          padding: 0.75rem 0.5rem;
+          text-align: center;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        td {
+          padding: 0.75rem 0.5rem;
+          font-size: 0.9rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+
+    .table {
+      min-width: 100%; // Ensures the table is responsive on small screens
+      font-size: 0.85rem;
+    }
+
+    .tabs {
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        margin: 0.5rem 0;
+        width: 100%;
+      }
+    }
+  }
+}

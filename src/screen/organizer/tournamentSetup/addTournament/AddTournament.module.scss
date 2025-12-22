@@ -1,0 +1,193 @@
+.container {
+  h2 {
+    margin-top: 2rem;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .backgroundImage{
+    position: absolute;
+    height: 600px;
+    z-index: 0;
+  }
+
+  .form {
+    z-index: 2;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+
+    .formGroup {
+      margin-bottom: 15px;
+
+      label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        &:focus {
+          border-color: #4caf50;
+          outline: none;
+        }
+      }
+
+      .radioGroup {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+
+        label {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+
+          input[type="radio"] {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+
+    .submitButton {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 0.5rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.formSection {
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.superTournamentSection {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+
+  .superTournamentInfo {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    border: 1px solid #dee2e6;
+
+    p {
+      margin: 0.5rem 0;
+      
+      strong {
+        color: #495057;
+      }
+    }
+  }
+}
+
+.loading {
+  text-align: center;
+  color: #6c757d;
+  padding: 0.5rem;
+  font-style: italic;
+}
+
+.dialogContent {
+  padding: 2rem;
+  min-width: 400px;
+  text-align: center;
+
+  h3 {
+    color: #28a745;
+    margin-bottom: 1.5rem;
+  }
+
+  .tournamentInfo {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: left;
+
+    p {
+      margin: 0.5rem 0;
+      
+      strong {
+        color: #495057;
+      }
+    }
+
+    .registrationInfo {
+      margin-top: 1rem;
+      border-top: 1px solid #dee2e6;
+      padding-top: 1rem;
+
+      .linkBox {
+        background-color: white;
+        padding: 0.75rem;
+        border-radius: 4px;
+        border: 1px solid #dee2e6;
+        word-break: break-all;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  .doneButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: #218838;
+    }
+  }
+}

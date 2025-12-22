@@ -1,0 +1,155 @@
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  min-height: 100vh;
+  padding: 20px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 2rem;
+
+    .form {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 2rem;
+
+      h1 {
+        color: #333;
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .formGroup {
+        margin-bottom: 1.5rem;
+
+        label {
+          font-size: 1.1rem;
+          display: block;
+          color: #333;
+          margin-bottom: 0.5rem;
+        }
+
+        .inputField {
+          width: 100%;
+          padding: 0.75rem;
+          margin-bottom: 0.5rem;
+          border: 1px solid #ced4da;
+          border-radius: 4px;
+          font-size: 1rem;
+          background-color: #fff;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+          }
+
+          &:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+          }
+        }
+
+        .errorMessage {
+          color: #dc3545;
+          font-size: 0.875rem;
+          margin: 0.25rem 0 0.5rem;
+        }
+      }
+
+      .submitButton {
+        background-color: #007bff;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1rem;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+
+        &:disabled {
+          background-color: #6c757d;
+          cursor: not-allowed;
+        }
+      }
+
+      .buttonBack {
+        background-color: #6c757d;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1rem;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #5a6268;
+        }
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+    .content {
+      padding-top: 1rem;
+
+      .form {
+        padding: 1.5rem;
+
+        h1 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content {
+      .form {
+        padding: 1rem;
+
+        .formGroup {
+          margin-bottom: 1rem;
+
+          label {
+            font-size: 1rem;
+          }
+
+          .inputField {
+            padding: 0.6rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        h1 {
+          font-size: 1.25rem;
+        }
+
+        .submitButton,
+        .buttonBack {
+          padding: 0.6rem 1.2rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+} 

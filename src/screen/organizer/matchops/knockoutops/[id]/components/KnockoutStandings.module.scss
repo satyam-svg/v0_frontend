@@ -1,0 +1,265 @@
+.knockoutStandings {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.matchCreationSection {
+    margin-bottom: 2rem;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -2rem;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to right, transparent, #0070f3, transparent);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.standingsSection {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    &.centered {
+        justify-content: center;
+    }
+}
+
+.poolTabs {
+    flex: 1;
+    min-width: 300px;
+
+    :global {
+        .MuiTabs-root {
+            min-height: 48px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .MuiTabs-scroller {
+            overflow-x: auto !important;
+        }
+
+        .MuiTab-root {
+            text-transform: none;
+            min-height: 48px;
+            font-weight: 500;
+            color: #666;
+
+            &.Mui-selected {
+                color: #0070f3;
+            }
+        }
+
+        .MuiTabs-indicator {
+            background-color: #0070f3;
+        }
+    }
+}
+
+.standingsControls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.standingsTypeSelector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+
+    span {
+        cursor: pointer;
+        padding: 4px 8px;
+        font-size: 14px;
+        color: #5f6368;
+        transition: all 0.2s ease;
+
+        &.activeLabel {
+            color: #1a73e8;
+            font-weight: 500;
+        }
+
+        &:hover {
+            color: #1a73e8;
+        }
+    }
+}
+
+.overallTypeSelector {
+    :global {
+        .MuiFormControlLabel-root {
+            margin-right: 16px;
+            
+            .MuiRadio-root {
+                color: #5f6368;
+                
+                &.Mui-checked {
+                    color: #1a73e8;
+                }
+            }
+            
+            .MuiFormControlLabel-label {
+                font-size: 14px;
+                color: #202124;
+            }
+        }
+    }
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: auto;
+
+    th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        white-space: nowrap;
+
+        &[data-label="Players"] {
+            min-width: 200px;
+            white-space: normal;
+        }
+
+        &[data-label="Team"] {
+            min-width: 120px;
+        }
+
+        &[data-label="Win %"],
+        &[data-label="Point Diff."],
+        &[data-label="Total Scores"],
+        &[data-label="slno"] {
+            text-align: center;
+        }
+
+        &[data-label="Points Scored"],
+        &[data-label="Points Lost"],
+        &[data-label="Won"],
+        &[data-label="Lost"],
+        &[data-label="Played"] {
+            text-align: right;
+        }
+    }
+
+    th {
+        background-color: #f8f9fa;
+        font-weight: 500;
+        color: #666;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tr:hover td {
+        background-color: #f8f9fa;
+    }
+}
+
+.standingsTable {
+    overflow-x: auto;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+}
+
+.error {
+    text-align: center;
+    color: #dc3545;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.viewSelector {
+    margin-bottom: 2rem;
+
+    :global {
+        .MuiTabs-root {
+            border-bottom: 1px solid #eee;
+        }
+
+        .MuiTab-root {
+            text-transform: none;
+            font-weight: 500;
+            color: #666;
+            min-width: 120px;
+
+            &.Mui-selected {
+                color: #0070f3;
+            }
+        }
+
+        .MuiTabs-indicator {
+            background-color: #0070f3;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .knockoutStandings {
+        gap: 1rem;
+    }
+
+    .standingsSection {
+        padding: 1rem;
+    }
+
+    .headerContent {
+        flex-direction: column;
+        align-items: stretch;
+
+        &.centered {
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+    .poolTabs {
+        width: 100%;
+    }
+
+    .standingsTypeSelector {
+        align-self: center;
+    }
+} 

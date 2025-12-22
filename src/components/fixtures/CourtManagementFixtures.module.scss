@@ -1,0 +1,90 @@
+.courtManagementContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.2s ease;
+    flex: 1;
+    max-width: 200px;
+    text-align: center;
+    position: relative;
+
+    &:hover {
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+    &.active {
+        background-color: #1a73e8;
+        color: white;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #1a73e8;
+        }
+    }
+}
+
+.commonFilters {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    :global {
+        .roundTabs, .poolTabs {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.fixturesContainer {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+}
+
+@media (max-width: 768px) {
+    .courtManagementContainer {
+        padding: 0.5rem;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        flex: 1 1 auto;
+        min-width: 120px;
+    }
+} 

@@ -1,0 +1,494 @@
+.courtManagementContainer {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h1 {
+        text-align: center;
+        color: #34495e;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+}
+
+.form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.tournamentName {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+.formSection {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+
+    label {
+        font-weight: 500;
+        color: #2c3e50;
+    }
+
+    .input {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: border-color 0.2s ease;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        &:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.loadButton {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    height: fit-content;
+    margin-top: 0;
+    min-width: 120px;
+
+    &:hover {
+        background-color: #2980b9;
+    }
+
+    &:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+    }
+}
+
+.tournamentInfo {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+
+    h2 {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .courtConfig {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+
+        label {
+            font-weight: 500;
+            color: #2c3e50;
+            min-width: 120px;
+        }
+
+        .courtInputGroup {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            input {
+                width: 80px;
+                padding: 0.5rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1rem;
+                text-align: center;
+
+                &:focus {
+                    outline: none;
+                    border-color: #3498db;
+                }
+
+                &:disabled {
+                    background-color: #f5f5f5;
+                    cursor: not-allowed;
+                }
+            }
+
+            .editButton {
+                padding: 0.5rem 1rem;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 0.875rem;
+                transition: background-color 0.2s ease;
+
+                &:hover {
+                    background-color: #2980b9;
+                }
+            }
+        }
+    }
+}
+
+.courtModal {
+    padding: 2rem;
+    max-width: 400px;
+    width: 100%;
+
+    h3 {
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #34495e;
+    }
+
+    .courtInput {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+
+        label {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        input {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-align: center;
+
+            &:focus {
+                outline: none;
+                border-color: #3498db;
+            }
+        }
+    }
+
+    .modalButtons {
+        display: flex;
+        gap: 1rem;
+
+        button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            &:first-child {
+                background-color: #3498db;
+                color: white;
+
+                &:hover {
+                    background-color: #2980b9;
+                }
+
+                &:disabled {
+                    background-color: #bdc3c7;
+                    cursor: not-allowed;
+                }
+            }
+
+            &.cancelButton {
+                background-color: #f5f5f5;
+                color: #2c3e50;
+
+                &:hover {
+                    background-color: #e8e8e8;
+                }
+            }
+        }
+    }
+}
+
+.loading {
+    text-align: center;
+    padding: 1rem;
+    color: #7f8c8d;
+    font-size: 0.875rem;
+}
+
+.courtAssignment {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+
+    .courtSelector {
+        display: flex;
+        gap: 1rem;
+
+        select {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+
+            &:focus {
+                outline: none;
+                border-color: #3498db;
+            }
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #219a52;
+            }
+
+            &:disabled {
+                background-color: #bdc3c7;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+.courtsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .courtColumn {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+
+        h3 {
+            color: #34495e;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .matchList {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+}
+
+.matchCard {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: #f8f9fa;
+    }
+
+    &.selected {
+        background-color: #e8f4fd;
+        border-color: #3498db;
+    }
+
+    .teams {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        .team {
+            flex: 1;
+            font-size: 0.9rem;
+            color: #2c3e50;
+
+            &.checkedIn {
+                color: #27ae60;
+            }
+        }
+
+        .vs {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+            padding: 0 0.5rem;
+        }
+    }
+
+    .matchInfo {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.8rem;
+        color: #7f8c8d;
+
+        .pool, .round {
+            background-color: #f8f9fa;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+    }
+}
+
+.backButton {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 1.5rem;
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: #7f8c8d;
+    }
+}
+
+.courtAssigned {
+    background-color: #27ae60;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.noMatches {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
+}
+
+.contentLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.matchesSection,
+.courtOrdersSection {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.courtOrdersSection {
+    margin-top: 2rem;
+}
+
+.matchTabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.matchTab {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: #3498db;
+    }
+
+    &.active {
+        color: #3498db;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3498db;
+        }
+    }
+}
+
+.courtGroup {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+
+    h3 {
+        margin-bottom: 1rem;
+        color: #2c3e50;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+    }
+} 

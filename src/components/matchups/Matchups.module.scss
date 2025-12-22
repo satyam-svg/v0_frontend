@@ -1,0 +1,79 @@
+.matchupsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+
+  .rounds {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .round {
+      text-align: center;
+      margin: 1rem;
+      gap: 1rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .matchup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #ddd;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      background-color: #f0f0f0;
+      border-color: #ccc;
+    }
+
+    .label {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #444;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      padding: 0.2rem 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-weight: 600;
+      color: #007bff;
+    }
+
+    .vs {
+      margin: 0 0.5rem;
+      font-weight: bold;
+      color: #444;
+    }
+  }
+}

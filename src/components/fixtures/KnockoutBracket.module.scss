@@ -1,0 +1,145 @@
+.bracketContainer {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem;
+    overflow-x: auto;
+    min-height: 600px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.round {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.roundTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.matchesColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+}
+
+.matchWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.matchBlock {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &.completed {
+        background: #f8f9fa;
+    }
+}
+
+.team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin: 0.25rem 0;
+    background: #f8f9fa;
+
+    &.winner {
+        background: #e3f2fd;
+        font-weight: 500;
+    }
+
+    &:first-child {
+        border-bottom: 1px solid #eee;
+    }
+}
+
+.teamInfo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.teamName {
+    font-weight: 500;
+}
+
+.teamId {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.score {
+    font-weight: 600;
+    min-width: 2rem;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    background: white;
+    border-radius: 4px;
+}
+
+.connectorGroup {
+    position: absolute;
+    left: 100%;
+    width: 3rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.connectorLine {
+    position: absolute;
+    height: 2px;
+    background: #ccc;
+    left: 0;
+    width: 100%;
+}
+
+.connectorVertical {
+    position: absolute;
+    width: 2px;
+    background: #ccc;
+    right: 0;
+    height: 100%;
+}
+
+// Adjust spacing for different rounds
+.round {
+    &:nth-child(1) .matchesColumn {
+        padding: 0;
+    }
+
+    &:nth-child(2) .matchesColumn {
+        padding: 4rem 0;
+    }
+
+    &:nth-child(3) .matchesColumn {
+        padding: 8rem 0;
+    }
+
+    &:nth-child(4) .matchesColumn {
+        padding: 16rem 0;
+    }
+} 

@@ -1,0 +1,1 @@
+export { default as CreateSuperTournament } from './CreateSuperTournament'; 

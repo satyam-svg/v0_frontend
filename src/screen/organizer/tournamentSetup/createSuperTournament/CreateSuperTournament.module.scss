@@ -1,0 +1,233 @@
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        color: #444;
+        margin: 1.5rem 0 1rem;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .formGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            label {
+                font-weight: 500;
+                color: #555;
+            }
+
+            .input {
+                padding: 0.75rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1rem;
+
+                &:focus {
+                    outline: none;
+                    border-color: #007bff;
+                    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+                }
+            }
+
+            textarea.input {
+                min-height: 100px;
+                resize: vertical;
+            }
+        }
+
+        .seasonsSection {
+            margin-top: 2rem;
+            border-top: 2px solid #eee;
+            padding-top: 1rem;
+
+            .seasonHeader {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1rem;
+
+                h3 {
+                    margin: 0;
+                }
+            }
+        }
+
+        .seasonGroup {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 1rem;
+            position: relative;
+
+            .seasonContent {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+
+                .input {
+                    flex: 1;
+                    padding: 0.75rem;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    font-size: 1rem;
+
+                    &:focus {
+                        outline: none;
+                        border-color: #007bff;
+                        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+                    }
+                }
+
+                .removeButton {
+                    background-color: #dc3545;
+                    color: white;
+                    border: none;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    font-size: 1.2rem;
+                    padding: 0;
+                    line-height: 1;
+
+                    &:hover {
+                        background-color: #c82333;
+                    }
+                }
+            }
+
+            .seasonNumber {
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                background-color: #007bff;
+                color: white;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.8rem;
+                font-weight: bold;
+            }
+        }
+
+        .addButton {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            align-self: flex-start;
+
+            &:hover {
+                background-color: #218838;
+            }
+        }
+
+        .submitButton {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+
+            &:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+.dialogContent {
+    padding: 2rem;
+    min-width: 400px;
+    text-align: center;
+
+    h3 {
+        color: #28a745;
+        margin-bottom: 1.5rem;
+    }
+
+    .tournamentInfo {
+        background-color: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        text-align: left;
+
+        p {
+            margin: 0.5rem 0;
+            
+            strong {
+                color: #495057;
+            }
+        }
+
+        .seasonsInfo {
+            margin-top: 1rem;
+
+            ul {
+                list-style: none;
+                padding-left: 1rem;
+                margin: 0.5rem 0;
+
+                li {
+                    padding: 0.25rem 0;
+                    color: #666;
+                }
+            }
+        }
+    }
+
+    .doneButton {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+
+        &:hover {
+            background-color: #218838;
+        }
+    }
+}
+
+.error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+} 

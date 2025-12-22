@@ -1,0 +1,208 @@
+.tableWrapper {
+  width: 100%;
+
+  .searchBar {
+    margin-bottom: 1rem;
+    
+    .searchInput {
+      width: 100%;
+      max-width: 300px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: #495057;
+      background-color: #fff;
+      transition: all 0.2s ease;
+
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+      }
+
+      &::placeholder {
+        color: #adb5bd;
+      }
+    }
+  }
+
+  .tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+
+      thead {
+        background-color: #f8f9fa;
+
+        th {
+          padding: 1rem;
+          text-align: left;
+          font-weight: 500;
+          color: #495057;
+          border-bottom: 2px solid #dee2e6;
+          white-space: nowrap;
+
+          &:first-child {
+            padding-left: 1.5rem;
+            width: 5%; // S.No column
+          }
+
+          &:nth-child(2) {
+            width: 20%; // Name column
+          }
+
+          &:nth-child(3) {
+            width: 15%; // Phone column
+          }
+
+          &:nth-child(4) {
+            width: 15%; // Skill Level column
+          }
+
+          &:nth-child(5) {
+            width: 15%; // Status column
+          }
+
+          &:nth-child(6) {
+            width: 20%; // Email column
+          }
+
+          &:last-child {
+            padding-right: 1.5rem;
+            width: 10%; // Actions column
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid #dee2e6;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: #f8f9fa;
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          td {
+            padding: 1rem;
+            color: #495057;
+            vertical-align: middle;
+
+            &:first-child {
+              padding-left: 1.5rem;
+              font-weight: 500;
+              text-align: center;
+            }
+
+            &:last-child {
+              padding-right: 1.5rem;
+            }
+
+            .status {
+              display: inline-block;
+              padding: 0.25rem 0.75rem;
+              border-radius: 20px;
+              font-size: 0.875rem;
+              font-weight: 500;
+              text-align: center;
+              white-space: nowrap;
+
+              &.checkedIn {
+                background-color: #d4edda;
+                color: #155724;
+              }
+
+              &.notCheckedIn {
+                background-color: #f8d7da;
+                color: #721c24;
+              }
+            }
+
+            &.actions {
+              white-space: nowrap;
+              text-align: right;
+
+              button {
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                font-size: 0.875rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                border: 1px solid transparent;
+                margin-left: 0.5rem;
+
+                &.editButton {
+                  background-color: transparent;
+                  border-color: #007bff;
+                  color: #007bff;
+
+                  &:hover {
+                    background-color: #007bff;
+                    color: white;
+                  }
+                }
+
+                &.deleteButton {
+                  background-color: transparent;
+                  border-color: #dc3545;
+                  color: #dc3545;
+
+                  &:hover {
+                    background-color: #dc3545;
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .tableWrapper {
+    .searchBar {
+      margin: 0 1rem 1rem 1rem;
+    }
+
+    .tableContainer {
+      margin: 0.5rem -1rem;
+      border-radius: 0;
+      
+      .table {
+        thead th, tbody td {
+          padding: 0.75rem;
+          
+          &:first-child {
+            padding-left: 1rem;
+          }
+          
+          &:last-child {
+            padding-right: 1rem;
+          }
+
+          .status {
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8125rem;
+          }
+        }
+      }
+    }
+  }
+} 

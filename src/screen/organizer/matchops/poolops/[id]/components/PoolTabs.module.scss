@@ -1,0 +1,103 @@
+.tabsContainer {
+    flex: 1;
+    overflow: hidden;
+    margin-right: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+
+    :global {
+        .MuiTabs-root {
+            min-height: 48px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .MuiTabs-scroller {
+            border-radius: 8px;
+        }
+
+        .MuiTabs-indicator {
+            background-color: #007bff;
+            height: 3px;
+        }
+
+        .MuiTab-root {
+            min-height: 48px;
+            text-transform: none;
+            font-weight: 500;
+            color: #666;
+            padding: 0 1.5rem;
+            position: relative;
+            border-right: 1px solid #e0e0e0;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            &:hover {
+                background-color: #f8f9fa;
+                color: #007bff;
+            }
+
+            &.Mui-selected {
+                color: #007bff;
+                background-color: #f0f7ff;
+                border-bottom: 3px solid #007bff;
+            }
+        }
+
+        .MuiTabs-scrollButtons {
+            width: 40px;
+            background-color: #fff;
+            border-radius: 0;
+            position: relative;
+            z-index: 1;
+
+            &.Mui-disabled {
+                opacity: 0.3;
+            }
+
+            &:first-of-type {
+                border-right: 1px solid #e0e0e0;
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+            }
+
+            &:last-of-type {
+                border-left: 1px solid #e0e0e0;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .tabsContainer {
+        margin-right: 0;
+        margin-bottom: 1rem;
+
+        :global {
+            .MuiTab-root {
+                padding: 0 1rem;
+                min-width: auto;
+                font-size: 0.875rem;
+            }
+
+            .MuiTabs-scrollButtons {
+                width: 32px;
+                
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+} 

@@ -1,0 +1,187 @@
+.matchListContainer {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h1 {
+        text-align: center;
+        color: #34495e;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+}
+
+.tournamentInput {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    input {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+
+        &:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #2980b9;
+        }
+    }
+}
+
+.courtAssignment {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+
+    .courtSelector {
+        display: flex;
+        gap: 1rem;
+
+        select {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+
+            &:focus {
+                outline: none;
+                border-color: #3498db;
+            }
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #219a52;
+            }
+
+            &:disabled {
+                background-color: #bdc3c7;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+.matchesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.matchesList {
+    .matchItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #f8f9fa;
+        }
+
+        &.selected {
+            background-color: #e8f4fd;
+            border-color: #3498db;
+        }
+
+        .matchInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+
+            .roundInfo {
+                font-size: 0.875rem;
+                color: #7f8c8d;
+            }
+        }
+
+        .courtAssigned {
+            background-color: #2ecc71;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+    }
+}
+
+.courtsView {
+    .courtsGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .courtCard {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+
+        h3 {
+            color: #34495e;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .courtMatches {
+            .courtMatch {
+                background-color: #f8f9fa;
+                padding: 0.5rem;
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+                font-size: 0.875rem;
+            }
+        }
+    }
+}
+
+.backButton {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 1.5rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: #c0392b;
+    }
+}

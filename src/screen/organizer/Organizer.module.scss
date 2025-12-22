@@ -1,0 +1,141 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+
+  h1 {
+    font-size: 2.8rem;
+    color: #34495e;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .button,
+  .buttonBack {
+    padding: 14px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    color: #fff;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+    }
+  }
+
+  .button {
+    background-color: #4a69bd;
+
+    &:hover {
+        background-color: #3b5998;
+    }
+}
+
+
+
+  /* "Go Back" button styling */
+  .buttonBack {
+    background-color: #e74c3c;
+    margin-top: 15px;
+
+    &:hover {
+      background-color: #c0392b;
+    }
+  }
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000;
+  text-align: left;
+
+  h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .inputField {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+
+    &:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+  }
+
+  .errorMessage {
+    color: #e74c3c;
+    font-size: 0.9rem;
+  }
+
+  .submitButton,
+  .cancelButton {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+
+  .submitButton {
+    background-color: #27ae60;
+    color: #fff;
+
+    &:hover {
+      background-color: #219150;
+    }
+  }
+
+  .cancelButton {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+
+    &:hover {
+      background-color: #95a5a6;
+    }
+  }
+}

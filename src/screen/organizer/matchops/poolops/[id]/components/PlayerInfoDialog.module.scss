@@ -1,0 +1,38 @@
+.playerDetails {
+    min-width: 300px;
+    padding: 1rem 0;
+
+    .detail {
+        display: flex;
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .label {
+            flex: 0 0 100px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .value {
+            color: #333;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .playerDetails {
+        min-width: auto;
+        padding: 0.5rem 0;
+
+        .detail {
+            margin-bottom: 0.75rem;
+
+            .label {
+                flex: 0 0 80px;
+            }
+        }
+    }
+} 

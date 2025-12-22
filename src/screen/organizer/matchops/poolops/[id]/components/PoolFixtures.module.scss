@@ -1,0 +1,223 @@
+.fixturesContainer {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        padding: 1rem;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1rem;
+        }
+    }
+
+    .content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1rem;
+
+        .loading {
+            text-align: center;
+            color: #666;
+            padding: 2rem;
+        }
+
+        .noFixtures {
+            text-align: center;
+            padding: 2rem;
+
+            .icon {
+                font-size: 3rem;
+                color: #6c757d;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin: 0 0 1rem;
+                color: #333;
+                font-size: 1rem;
+            }
+
+            .note {
+                margin-top: 1rem;
+                color: #666;
+                font-size: 0.875rem;
+                font-style: italic;
+            }
+        }
+
+        .fixturesList {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .matchCard {
+                background-color: #f8f9fa;
+                border: 1px solid #e0e0e0;
+                border-radius: 6px;
+                padding: 1rem;
+
+                .matchHeader {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 1rem;
+
+                    .matchNumber {
+                        font-weight: 500;
+                        color: #333;
+                    }
+
+                    .status {
+                        font-size: 0.875rem;
+                        padding: 0.25rem 0.5rem;
+                        border-radius: 12px;
+
+                        &.completed {
+                            background-color: #d4edda;
+                            color: #155724;
+                        }
+
+                        &.in_progress {
+                            background-color: #fff3cd;
+                            color: #856404;
+                        }
+
+                        &.pending {
+                            background-color: #e9ecef;
+                            color: #6c757d;
+                        }
+                    }
+                }
+
+                .teams {
+                    display: grid;
+                    grid-template-columns: 1fr auto 1fr;
+                    gap: 1rem;
+                    align-items: center;
+
+                    .team {
+                        background-color: #fff;
+                        padding: 1rem;
+                        border-radius: 4px;
+                        border: 1px solid #e0e0e0;
+                        text-align: center;
+
+                        &.winner {
+                            border-color: #28a745;
+                            background-color: #f8fff9;
+                        }
+
+                        .teamName {
+                            font-weight: 500;
+                            color: #333;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        .players {
+                            font-size: 0.875rem;
+                            color: #666;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        .score {
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                            color: #333;
+                        }
+                    }
+
+                    .vs {
+                        color: #666;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.noPool {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #666;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px dashed #e0e0e0;
+    margin: 1rem;
+
+    p {
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .fixturesContainer {
+        .header {
+            padding: 0.75rem;
+        }
+
+        .content {
+            padding: 0.75rem;
+
+            .fixturesList {
+                .matchCard {
+                    padding: 0.75rem;
+
+                    .teams {
+                        grid-template-columns: 1fr;
+                        gap: 0.5rem;
+
+                        .vs {
+                            display: none;
+                        }
+
+                        .team {
+                            padding: 0.75rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .fixturesContainer {
+        .header {
+            padding: 0.5rem;
+        }
+
+        .content {
+            padding: 0.5rem;
+
+            .fixturesList {
+                .matchCard {
+                    padding: 0.5rem;
+
+                    .matchHeader {
+                        margin-bottom: 0.75rem;
+                    }
+
+                    .teams {
+                        .team {
+                            padding: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 
