@@ -1,12 +1,12 @@
 const getBaseUrl = () => {
     const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
-    
+
     // Check if localhost
     if (hostname === 'localhost') {
         console.log('Using localhost API endpoint');
         return "http://localhost:5001";
     }
-    
+
     // Check if dev or uat domain
     if (['dev.khelclub.org', 'uat.khelclub.org'].includes(hostname)) {
         console.log('Using UAT API endpoint');
@@ -17,7 +17,7 @@ const getBaseUrl = () => {
         console.log('Using production API endpoint');
         return "https://api-v1.khelclub.co";
     }
-    
+
     console.log('Using UAT API endpoint');
     return "https://dev.api-v1.khelclub.co";
 };
@@ -64,7 +64,7 @@ export const endpoints = {
     createSuperTournament: baseurl + "/super-tournaments",
     getSuperTournamentDetails: baseurl + "/super-tournaments",
     getSuperTournamentSeasons: baseurl + "/super-tournaments/{super_tournament_id}/seasons",
-    
+
     // New Season endpoints
     getSeasons: baseurl + "/seasons",
     createSeason: baseurl + "/seasons",
@@ -72,7 +72,7 @@ export const endpoints = {
     createSeasonInSuperTournament: baseurl + "/super-tournaments/{super_tournament_id}/seasons",
 
     // Modified Tournament endpoints
-    createTournament: baseurl + "/tournaments", 
+    createTournament: baseurl + "/tournaments",
     getSuperTournament: baseurl + "/super-tournaments",
 
     // Knockout Tournament endpoints

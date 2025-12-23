@@ -65,10 +65,10 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
         getFilteredMatches,
         handleRoundClick,
         handlePoolClick
-    } = BaseFixtures({ 
-        tournamentId, 
+    } = BaseFixtures({
+        tournamentId,
         totalRounds,
-        showCourtInfo: true 
+        showCourtInfo: true
     });
 
     const getAvailableCourts = () => {
@@ -107,7 +107,7 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
 
     const renderMatches = (matches = []) => {
         if (!Array.isArray(matches)) return null;
-        
+
         return matches.map((match) => (
             <div
                 key={match.match_id}
@@ -119,24 +119,26 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
                 </div>
 
                 <div className={styles.teams}>
-                    <div className={`${styles.team} ${
-                        match.team1_checked_in === true ? styles.checkedIn : ''
-                    }`}>
+                    <div className={`${styles.team} ${match.winner_team_id === match.team1_id ? styles.winner : ''
+                        } ${match.team1_checked_in === true ? styles.checkedIn : ''}`}>
                         <div className={styles.teamPlayers}>{match.team1_players}</div>
                         {match.team1_id && (
                             <div className={styles.teamId}>Team ID: {match.team1_id}</div>
                         )}
-                        <div className={styles.score}>{match.team1Score}</div>
+                        <div className={styles.score}>
+                            {match.outcome === 'walkover' ? (match.winner_team_id === match.team1_id ? 'W' : '-') : match.team1Score}
+                        </div>
                     </div>
                     <div className={styles.vs}>vs</div>
-                    <div className={`${styles.team} ${
-                        match.team2_checked_in === true ? styles.checkedIn : ''
-                    }`}>
+                    <div className={`${styles.team} ${match.winner_team_id === match.team2_id ? styles.winner : ''
+                        } ${match.team2_checked_in === true ? styles.checkedIn : ''}`}>
                         <div className={styles.teamPlayers}>{match.team2_players}</div>
                         {match.team2_id && (
                             <div className={styles.teamId}>Team ID: {match.team2_id}</div>
                         )}
-                        <div className={styles.score}>{match.team2Score}</div>
+                        <div className={styles.score}>
+                            {match.outcome === 'walkover' ? (match.winner_team_id === match.team2_id ? 'W' : '-') : match.team2Score}
+                        </div>
                     </div>
                 </div>
 
@@ -146,6 +148,9 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
                     <span className={`${styles.status} ${styles[match.status]}`}>
                         {match.status.charAt(0).toUpperCase() + match.status.slice(1)}
                     </span>
+                    {match.outcome === 'walkover' && (
+                        <span className={styles.walkoverTag}>WO</span>
+                    )}
                 </div>
             </div>
         ));
@@ -189,12 +194,12 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
                 <div className={styles.knockoutContainer}>
                     {knockoutMatches.length > 0 ? (
                         knockoutView === 'default' ? (
-                            <KnockoutBracket 
-                                matches={knockoutMatches} 
+                            <KnockoutBracket
+                                matches={knockoutMatches}
                             />
                         ) : (
-                            <KnockoutBracket2 
-                                matches={knockoutMatches} 
+                            <KnockoutBracket2
+                                matches={knockoutMatches}
                             />
                         )
                     ) : (
@@ -215,7 +220,7 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
                                 >
                                     {roundData.round_name}
                                 </button>
-                        ))}
+                            ))}
                     </div>
 
                     {selectedRound && (
@@ -268,7 +273,7 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
                                             >
                                                 {poolId}
                                             </button>
-                                    ))}
+                                        ))}
                                 </div>
                             )}
 
@@ -317,4 +322,4 @@ const TournamentFixtures = ({ tournamentId, totalRounds }) => {
     );
 };
 
-export default TournamentFixtures; 
+export default TournamentFixtures;

@@ -18,6 +18,8 @@ const MatchScreen = ({ tournamentId, matchId }) => {
     const [isModalOpen, setModalOpen] = useState(false);
     const [showStatusModal, setShowStatusModal] = useState(false);
     const [matchStatus, setMatchStatus] = useState(null);
+    const [matchOutcome, setMatchOutcome] = useState('normal'); // 'normal' or 'walkover'
+    const [selectedWinner, setSelectedWinner] = useState(null);
     const router = useRouter();
 
     const getScores = async () => {
@@ -34,13 +36,14 @@ const MatchScreen = ({ tournamentId, matchId }) => {
                     tournament_id: tournamentId,
                 },
             });
-            
+
             if (!response) {
                 throw new Error("Failed to fetch match details");
             }
 
             setMatchStatus(response.status || 'pending');
-            
+            setMatchOutcome(response.outcome || 'normal');
+
             if (response.status === 'completed') {
                 setShowStatusModal(true);
             } else if (response.status === 'pending') {
@@ -53,6 +56,9 @@ const MatchScreen = ({ tournamentId, matchId }) => {
             }
             if (response.team2?.score !== undefined) {
                 formik.setFieldValue("team2Score", response.team2.score);
+            }
+            if (response.winner_team_id) {
+                setSelectedWinner(response.winner_team_id);
             }
         } catch (error) {
             console.error("Failed to fetch Score:", error.message);
@@ -94,12 +100,19 @@ const MatchScreen = ({ tournamentId, matchId }) => {
 
     const updateScore = async (isFinal = false, override = false) => {
         try {
+            if (matchOutcome === 'walkover' && isFinal && !selectedWinner) {
+                toast.error("Please select a winner for the walkover");
+                return;
+            }
+
             const requestBody = {
                 tournament_id: tournamentId,
                 match_id: matchId,
-                score: `${formik.values.team1Score}-${formik.values.team2Score}`,
+                score: matchOutcome === 'walkover' ? "0-0" : `${formik.values.team1Score}-${formik.values.team2Score}`,
                 final: isFinal,
-                override: override
+                override: override,
+                outcome: matchOutcome,
+                winner_team_id: matchOutcome === 'walkover' ? selectedWinner : undefined
             };
 
             const scorePromise = fetch(endpoints.updateMatchScore, {
@@ -110,7 +123,7 @@ const MatchScreen = ({ tournamentId, matchId }) => {
                 body: JSON.stringify(requestBody),
             });
 
-            const statusPromise = isFinal ? 
+            const statusPromise = isFinal ?
                 apiCall(`${endpoints.updateMatchStatus}/${matchId}`, {
                     method: "POST",
                     body: {
@@ -145,9 +158,11 @@ const MatchScreen = ({ tournamentId, matchId }) => {
 
             if (resp) {
                 toast.success(resp.message);
-                formik.setFieldValue("team1Score", resp.team1_score);
-                formik.setFieldValue("team2Score", resp.team2_score);
-                
+                if (matchOutcome !== 'walkover') {
+                    formik.setFieldValue("team1Score", resp.team1_score);
+                    formik.setFieldValue("team2Score", resp.team2_score);
+                }
+
                 if (isFinal && resp.winner_team_id) {
                     setScoreData(prev => ({
                         ...prev,
@@ -155,7 +170,7 @@ const MatchScreen = ({ tournamentId, matchId }) => {
                     }));
                     setMatchStatus('completed');
                 }
-                
+
                 if (isFinal) {
                     router.push(`/referee/${tournamentId}/matches`);
                 }
@@ -184,7 +199,7 @@ const MatchScreen = ({ tournamentId, matchId }) => {
                     status: "on-going"
                 }
             });
-            
+
             setMatchStatus('on-going');
             setShowStatusModal(false);
             toast.success("Match started successfully");
@@ -232,47 +247,92 @@ const MatchScreen = ({ tournamentId, matchId }) => {
                 </div>
             </div>
 
+            <div className={stl.matchTypeToggle}>
+                <button
+                    className={`${stl.toggleButton} ${matchOutcome === 'normal' ? stl.active : ''}`}
+                    onClick={() => setMatchOutcome('normal')}
+                >
+                    Normal Match
+                </button>
+                <button
+                    className={`${stl.toggleButton} ${matchOutcome === 'walkover' ? stl.active : ''}`}
+                    onClick={() => setMatchOutcome('walkover')}
+                >
+                    Walkover
+                </button>
+            </div>
+
             <form onSubmit={formik.handleSubmit} className={stl.scoreForm}>
-                <div className={stl.teams}>
-                    <TeamCard
-                        team={scoreData.team1}
-                        players={scoreData.team1?.players || []}
-                        onScoreChange={(change) => handleScoreChange("team1", change)}
-                        onReset={() => resetScore("team1")}
-                        formik={formik}
-                        teamName="team1Score"
-                    />
+                {matchOutcome === 'normal' ? (
+                    <div className={stl.teams}>
+                        <TeamCard
+                            team={scoreData.team1}
+                            players={scoreData.team1?.players || []}
+                            onScoreChange={(change) => handleScoreChange("team1", change)}
+                            onReset={() => resetScore("team1")}
+                            formik={formik}
+                            teamName="team1Score"
+                        />
 
-                    <div className={stl.vs}>VS</div>
+                        <div className={stl.vs}>VS</div>
 
-                    <TeamCard
-                        team={scoreData.team2}
-                        players={scoreData.team2?.players || []}
-                        onScoreChange={(change) => handleScoreChange("team2", change)}
-                        onReset={() => resetScore("team2")}
-                        formik={formik}
-                        teamName="team2Score"
-                    />
-                </div>
+                        <TeamCard
+                            team={scoreData.team2}
+                            players={scoreData.team2?.players || []}
+                            onScoreChange={(change) => handleScoreChange("team2", change)}
+                            onReset={() => resetScore("team2")}
+                            formik={formik}
+                            teamName="team2Score"
+                        />
+                    </div>
+                ) : (
+                    <div className={stl.walkoverSelection}>
+                        <h3>Select Winner</h3>
+                        <div className={stl.winnerOptions}>
+                            <div
+                                className={`${stl.winnerOption} ${selectedWinner === scoreData.team1?.team_id ? stl.selected : ''}`}
+                                onClick={() => setSelectedWinner(scoreData.team1?.team_id)}
+                            >
+                                <h4>Team {scoreData.team1?.team_id}</h4>
+                                <div className={stl.players}>
+                                    {scoreData.team1?.players?.map(p => `${p.first_name} ${p.last_name}`).join(' & ')}
+                                </div>
+                            </div>
+                            <div
+                                className={`${stl.winnerOption} ${selectedWinner === scoreData.team2?.team_id ? stl.selected : ''}`}
+                                onClick={() => setSelectedWinner(scoreData.team2?.team_id)}
+                            >
+                                <h4>Team {scoreData.team2?.team_id}</h4>
+                                <div className={stl.players}>
+                                    {scoreData.team2?.players?.map(p => `${p.first_name} ${p.last_name}`).join(' & ')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 <div className={stl.actions}>
-                    <button type="button" onClick={() => updateScore(false)}>Update</button>
-                    <button type="button" onClick={finalizeScore}>Final</button>
+                    {matchOutcome === 'normal' && (
+                        <button type="button" onClick={() => updateScore(false)}>Update</button>
+                    )}
+                    <button type="button" onClick={finalizeScore}>
+                        {matchOutcome === 'walkover' ? 'Confirm Walkover' : 'Final'}
+                    </button>
                 </div>
             </form>
 
             {isModalOpen && (
                 <div className={stl.modal}>
                     <div className={stl.modalContent}>
-                        <p>Are you sure you want to finalize the scores?</p>
+                        <p>Are you sure you want to finalize the {matchOutcome === 'walkover' ? 'walkover' : 'scores'}?</p>
                         <button onClick={confirmFinalize} style={{ backgroundColor: '#4CAF50', color: 'white' }}>Confirm</button>
                         <button onClick={() => setModalOpen(false)}>Cancel</button>
                     </div>
                 </div>
             )}
 
-            <Dialog 
-                open={showStatusModal} 
+            <Dialog
+                open={showStatusModal}
                 onClose={handleBackToMatches}
             >
                 <DialogTitle>
@@ -286,21 +346,21 @@ const MatchScreen = ({ tournamentId, matchId }) => {
                     )}
                 </DialogContent>
                 <DialogActions>
-                    <Button 
+                    <Button
                         onClick={handleBackToMatches}
                         style={{ color: '#F28C28' }}
                     >
                         Cancel
                     </Button>
                     {matchStatus === 'completed' ? (
-                        <Button 
+                        <Button
                             onClick={() => setShowStatusModal(false)}
                             style={{ color: '#4CAF50' }}
                         >
                             Override Score
                         </Button>
                     ) : (
-                        <Button 
+                        <Button
                             onClick={handleStartMatch}
                             style={{ color: '#4CAF50' }}
                         >
@@ -326,7 +386,7 @@ const TeamCard = ({ team, players = [], onScoreChange, onReset, formik, teamName
                 ))}
             </div>
         </div>
-        
+
         <TextField
             size="small"
             className={stl.score}
@@ -335,7 +395,7 @@ const TeamCard = ({ team, players = [], onScoreChange, onReset, formik, teamName
             error={Boolean(formik.errors[teamName])}
             helperText={formik.errors[teamName]}
         />
-        
+
         <div className={stl.scoreControls}>
             <button type="button" onClick={() => onScoreChange(1)}>+1</button>
             <button type="button" onClick={() => onScoreChange(-1)}>-1</button>
